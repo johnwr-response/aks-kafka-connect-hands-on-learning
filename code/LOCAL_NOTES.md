@@ -51,6 +51,47 @@ docker-compose up kafka-cluster
 docker pull landoop/fast-data-dev
 ```
 
+### Section 6: Kafka Connect Source - Hands On
+- Kafka Connect Source Architecture Design
+- FileStream Source Connector - Standalone Mode - Part 1
+  - Properties for Infrastructure
+    - `bootstrap.servers` points to Kafka Broker (localhost:9092)
+    - These are used to set converter classes. Very often these are set to `org.apache.kafka.connect.json.JsonConverter`
+    - `key.converter`
+    - `value.converter`
+    - `internal.key.converter`
+    - `internal.value.converter`
+    - These are used to enable/disable the above converters. (`boolean` value)
+    - `key.converter.schemas.enable`
+    - `value.converter.schemas.enable`
+    - `internal.key.converter.schemas.enable`
+    - `internal.value.converter.schemas.enable`
+    - Rest API
+    - `rest.port` (sample value: `8086`)
+    - `rest.host.name` (sample value: `127.0.0.1`)
+    - `these configs are only for standalone workers
+    - `offset.storage.file.filename` (sample value for standalone workers: `standalone.offsets`)
+    - `offset.flush.interval.ms` (sample value `10000`)
+  - Properties for actual connector
+    - These are the standard kafka connect parameters, need for ALL connectors
+      - `name` A unique name for each connector
+      - `connector.class` Class for Kafka to run the connector
+      - `tasks.max` Number of tasks to run in parallel
+    - Then parameters for the connectors themself ([List of parameters for FileStreamSourceConnector](https://github.com/apache/kafka/blob/trunk/connect/file/src/main/java/org/apache/kafka/connect/file/FileStreamSourceConnector.java "List of parameters for FileStreamSourceConnector"))
+      - `file` (Sample for this demo = `demo-file.txt`)
+      - `topic`(Sample for this demo = `demo-1-standalone`)
+- FileStream Source Connector - Standalone Mode - Part 2
+  - Run demo 1
+```
+docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest bash
+kafka-topics --create --topic demo-1-standalone --partitions 3 --replication-factor 1 --zookeeper 127.0.0.1:2181
+cd /tutorial/source/demo-1
+connect-standalone worker.properties file-stream-demo-standalone.properties
+```
+
+
+
+
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
 
