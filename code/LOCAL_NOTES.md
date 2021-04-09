@@ -115,6 +115,10 @@ kafka-console-consumer --topic demo-2-distributed --from-beginning --bootstrap-s
   - Using the Docker image from Lenses.io there will be some connectors already bundled to be used right away
   - To add your own, you need to map your volumes to the Docker Container at startup
     - [More information](https://github.com/lensesio/fast-data-dev#enable-additional-connectors "How to add additional connectors to Docker Image from Lenses.io")
+- Twitter Source Connector - Distributed Mode - Part 1
+  - This sample will be using the following connector [kafka-connect-twitter](https://github.com/Eneco/kafka-connect-twitter)
+  - Keys from a Twitter app is needed. [Create one here](https://developer.twitter.com/)
+  - Add these keys to the properties file in demo-3
 
 
 # Links
