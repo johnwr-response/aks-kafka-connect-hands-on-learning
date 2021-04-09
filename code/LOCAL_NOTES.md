@@ -119,7 +119,27 @@ kafka-console-consumer --topic demo-2-distributed --from-beginning --bootstrap-s
   - This sample will be using the following connector [kafka-connect-twitter](https://github.com/Eneco/kafka-connect-twitter)
   - Keys from a Twitter app is needed. [Create one here](https://developer.twitter.com/)
   - Add these keys to the properties file in demo-3
-
+- Twitter Source Connector - Distributed Mode - Part 2
+  - Log in to the Kafka Tools, create the topic and a consumer
+```
+docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest bash
+kafka-topics --create --topic demo-3-twitter --partitions 3 --replication-factor 1 --zookeeper 127.0.0.1:2181
+kafka-console-consumer --topic demo-3-twitter --bootstrap-server 127.0.0.1:9092
+```
+  - Go to Kafka Connect UI
+    - click on new
+    - select the twitter source connector
+    - paste the content of the properties file created in demo-3
+    - if no errors, click create
+    - However, there is currently a bug here.
+      - the connector also needs the `tweets` property (in addition to the `tweet`)
+      - the UI will not enable the create button
+      - go to the CURL section
+        - copy the content
+        - change the server location to `localhost:8083/connectors`
+        - paste it to the command line to run it
+        - The output should be the resulting json object for the connector
+    - Tweets should now start to roll in to your consumer
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
