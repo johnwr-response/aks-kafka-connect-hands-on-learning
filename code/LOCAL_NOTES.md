@@ -142,6 +142,17 @@ kafka-console-consumer --topic demo-3-twitter --bootstrap-server 127.0.0.1:9092
     - Tweets should now start to roll in to your consumer
 - Section Summary
 
+### Section 7: Kafka Connect Sink - Hands On
+- Kafka Connect Sink Architecture Design
+- ElasticSearch Sink Connector - Distributed Mode
+```
+docker-compose up -d kafka-cluster elasticsearch postgres
+```
+  - Verify elasticsearch is running by getting `http://localhost:9200/` in postman
+  - In the kafka connect UI, apply the configuration from `sink/demo-elastic/sink-elastic-twitter-distributed.properties`
+  - Verify in the  [dejavu UI](http://127.0.0.1:9200/_plugin/dejavu "The Missing Web UI for Elasticsearch")
+    - Here we can also add queries like the examples in the demo folder
+
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
 - [Confluent Hub](https://www.confluent.io/hub/ "Confluent Hub for Kafka® connectors and more")
