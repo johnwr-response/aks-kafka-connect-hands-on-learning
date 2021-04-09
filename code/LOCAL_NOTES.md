@@ -152,6 +152,53 @@ docker-compose up -d kafka-cluster elasticsearch postgres
   - In the kafka connect UI, apply the configuration from `sink/demo-elastic/sink-elastic-twitter-distributed.properties`
   - Verify in the  [dejavu UI](http://127.0.0.1:9200/_plugin/dejavu "The Missing Web UI for Elasticsearch")
     - Here we can also add queries like the examples in the demo folder
+- Kafka Connect REST API
+  - First start a session with the kafka tools
+```
+docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest bash
+```
+  - REST API Calls
+    - Get Worker Information:
+      ```
+      curl -s 127.0.0.1:8083/ | jq
+      ```
+    - List connectors available on a worker:
+      ```
+      curl -s 127.0.0.1:8083/connector-plugins | jq
+      ```
+    - Ask about active connectors:
+      ```
+      curl -s 127.0.0.1:8083/connectors | jq
+      ```
+    - Get information about a connectors tasks and configs:
+      ```
+      curl -s 127.0.0.1:8083/connectors/source-twitter-distributed/tasks | jq
+      ```
+    - Get connector status:
+      ```
+      curl -s 127.0.0.1:8083/connectors/file-stream-demo-distributed/status | jq
+      ```
+    - Pause / resume a connector:
+      ```
+      curl -s -X PUT 127.0.0.1:8083/connectors/file-stream-demo-distributed/pause
+      curl -s -X PUT 127.0.0.1:8083/connectors/file-stream-demo-distributed/resume
+      ```
+    - Delete a connector:
+      ```
+      curl -s -X DELETE 127.0.0.1:8083/connectors/file-stream-demo-distributed
+      ```
+    - Create a new connector:
+      ```
+      curl -s -X POST -H "Content-Type: application/json" --data '{"name": "file-stream-demo-distributed", "config":{"connector.class":"org.apache.kafka.connect.file.FileStreamSourceConnector","key.converter.schemas.enable":"true","file":"demo-file.txt","tasks.max":"1","value.converter.schemas.enable":"true","name":"file-stream-demo-distributed","topic":"demo-2-distributed","value.converter":"org.apache.kafka.connect.json.JsonConverter","key.converter":"org.apache.kafka.connect.json.JsonConverter"}}' http://127.0.0.1:8083/connectors | jq
+      ```
+    - Update connector configuration:
+      ```
+      curl -s -X PUT -H "Content-Type: application/json" --data '{"connector.class":"org.apache.kafka.connect.file.FileStreamSourceConnector","key.converter.schemas.enable":"true","file":"demo-file.txt","tasks.max":"2","value.converter.schemas.enable":"true","name":"file-stream-demo-distributed","topic":"demo-2-distributed","value.converter":"org.apache.kafka.connect.json.JsonConverter","key.converter":"org.apache.kafka.connect.json.JsonConverter"}' 127.0.0.1:8083/connectors/file-stream-demo-distributed/config | jq
+      ```
+    - Get connector configuration:
+      ```
+      curl -s 127.0.0.1:8083/connectors/file-stream-demo-distributed | jq
+      ```
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
