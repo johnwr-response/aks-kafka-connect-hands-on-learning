@@ -199,6 +199,8 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
       ```
       curl -s 127.0.0.1:8083/connectors/file-stream-demo-distributed | jq
       ```
+- JDBC Sink Connector - Distributed Mode
+  - sink made by `code/sink/demo-postgres/sink-postgres-twitter-distributed.properties`
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
