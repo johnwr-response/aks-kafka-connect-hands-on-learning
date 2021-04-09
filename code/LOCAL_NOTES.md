@@ -140,6 +140,7 @@ kafka-console-consumer --topic demo-3-twitter --bootstrap-server 127.0.0.1:9092
         - paste it to the command line to run it
         - The output should be the resulting json object for the connector
     - Tweets should now start to roll in to your consumer
+- Section Summary
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
