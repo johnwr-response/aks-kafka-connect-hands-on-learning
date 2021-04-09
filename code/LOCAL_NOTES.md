@@ -39,7 +39,7 @@
 - Starting Kafka Connect Cluster using Docker Compose
 ```
 cd code
-docker-compose up kafka-cluster
+docker-compose up -d kafka-cluster
 ```
 
 ### Section 5: Troubleshooting Kafka Connect
@@ -59,13 +59,13 @@ docker pull landoop/fast-data-dev
     - These are used to set converter classes. Very often these are set to `org.apache.kafka.connect.json.JsonConverter`
     - `key.converter`
     - `value.converter`
-    - `internal.key.converter`
-    - `internal.value.converter`
+    - `internal.key.converter` NB! Not needed after v2.0
+    - `internal.value.converter` NB! Not needed after v2.0
     - These are used to enable/disable the above converters. (`boolean` value)
     - `key.converter.schemas.enable`
     - `value.converter.schemas.enable`
-    - `internal.key.converter.schemas.enable`
-    - `internal.value.converter.schemas.enable`
+    - `internal.key.converter.schemas.enable` NB! Not needed after v2.0
+    - `internal.value.converter.schemas.enable` NB! Not needed after v2.0
     - Rest API
     - `rest.port` (sample value: `8086`)
     - `rest.host.name` (sample value: `127.0.0.1`)
@@ -88,7 +88,27 @@ kafka-topics --create --topic demo-1-standalone --partitions 3 --replication-fac
 cd /tutorial/source/demo-1
 connect-standalone worker.properties file-stream-demo-standalone.properties
 ```
-
+- FileStream Source Connector - Distributed Mode
+  - Run demo 2
+```
+docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest bash
+kafka-topics --create --topic demo-2-distributed --partitions 3 --replication-factor 1 --zookeeper 127.0.0.1:2181
+```
+  - Create the connector in GUI with the content from the property file of demo-2 
+  - Log in to the container, create the configured input text file and add some text to it
+```
+docker ps # to get container id
+docker exec -it <container_id> bash # to log in to it
+touch demo-file.txt
+echo "hi" >> demo-file.txt
+echo "hello" >> demo-file.txt
+echo "from the other side" >> demo-file.txt
+```
+  - reconnect with kafka tools and check with a consumer
+```
+docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest bash
+kafka-console-consumer --topic demo-2-distributed --from-beginning --bootstrap-server 127.0.0.1:9092
+```
 
 
 
