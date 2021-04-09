@@ -215,6 +215,15 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
         - Package Jars
         - Run Jars in standalone mode
         - Deploy Jars
+- Finding the code and installing required software
+- Description of the GitHub Issues API
+  - [API Documentation](https://docs.github.com/en/rest/reference/issues#list-repository-issues "List issues in a repository.")
+- Using the Maven Archetype to get started
+  - [Maven Archetype](https://github.com/jcustenborder/kafka-connect-archtype)
+  - Create an IntelliJ project using the following maven archetype to get skeleton files
+    - `GroupId` = `com.github.jcustenborder.kafka.connect`
+    - `ArtifactId` = `kafka-connect-quickstart`
+    - `Version` = `2.4.0`
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
