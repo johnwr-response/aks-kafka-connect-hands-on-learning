@@ -202,6 +202,20 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
 - JDBC Sink Connector - Distributed Mode
   - sink made by `code/sink/demo-postgres/sink-postgres-twitter-distributed.properties`
 
+### Section 8: Writing your own Kafka Connector
+- Goal of the section: GitHubSourceConnector
+    - Understand how connectors are made using the GitHubSourceConnector as an example
+        - Dependencies
+        - ConfigDef
+        - Connector
+        - Schema & Struct
+        - Source Partition & Source Offsets
+        - Task
+    - Understand how to deploy your connectors (or any connectors)
+        - Package Jars
+        - Run Jars in standalone mode
+        - Deploy Jars
+
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
 - [Confluent Hub](https://www.confluent.io/hub/ "Confluent Hub for Kafka® connectors and more")
