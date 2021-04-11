@@ -236,6 +236,12 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
   - Source Partition & Source Offsets are for Kafka Connect Source
 - Source Task
 - Building and running a Connector in Standalone Mode
+- Deploying our Connector on the `Landoop` cluster  
+  - Deploy the built jars to Kafka using Docker Volumes:
+    ```
+    docker run -it --rm -p 2181:2181 -p 3030:3030 -p 8081:8081 -p 8082:8082 -p 8083:8083 -p 9092:9092 -e ADV_HOST=127.0.0.1 -e RUNTESTS=0 -v /c/usr/local/projects/java/kurs/apache-kafka-series/kafka-connect-hands-on-learning/code/kafka-connect-custom-sample/target/kafka-connect-target/usr/share/kafka-connect/kafka-connect-custom-sample:/connectors/GitHub landoop/fast-data-dev
+    ```
+  - Create the connector in the UI (or by using the RestAPI)
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
