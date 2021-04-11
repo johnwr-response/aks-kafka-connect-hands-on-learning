@@ -242,11 +242,16 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
     docker run -it --rm -p 2181:2181 -p 3030:3030 -p 8081:8081 -p 8082:8082 -p 8083:8083 -p 9092:9092 -e ADV_HOST=127.0.0.1 -e RUNTESTS=0 -v /c/usr/local/projects/java/kurs/apache-kafka-series/kafka-connect-hands-on-learning/code/kafka-connect-custom-sample/target/kafka-connect-target/usr/share/kafka-connect/kafka-connect-custom-sample:/connectors/GitHub landoop/fast-data-dev
     ```
   - Create the connector in the UI (or by using the RestAPI)
+- More Resources for Developers
+  - Added to section with links below
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
 - [Confluent Hub](https://www.confluent.io/hub/ "Confluent Hub for Kafka® connectors and more")
-
+- [Confluent list of Connectors](https://www.confluent.io/product/connectors/ "Confluent Connector Portfolio")
+- [Confluent Connector Guidelines](https://www.confluent.io/wp-content/uploads/Partner-Dev-Guide-for-Kafka-Connect.pdf?x18424 "Partner Development Guide for Kafka Connect")
+- [Kafka Connect Developer Guide](https://docs.confluent.io/platform/current/connect/devguide.html "Connector Developer Guide")
+- [Guidelines for writing Connectors](https://gist.github.com/jcustenborder/b9b1518cc794e1c1895c3da7abbe9c08#schema-types "Gist from confluent employee")
 
 # Github setup
 ```
