@@ -229,6 +229,11 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
 - Writing a schema
 - Data Model for our Objects
 - Writing our GitHub API HTTP Client
+- Source Partition & Source Offsets
+  - Source Partition allows Kafka Connect to know which source you've been reading from
+  - Source Offsets allows Kafka Connect to track your progress in reading from the Source Partition
+  - These are different from the partitions and offsets in Kafka Topic
+  - Source Partition & Source Offsets are for Kafka Connect Source
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")

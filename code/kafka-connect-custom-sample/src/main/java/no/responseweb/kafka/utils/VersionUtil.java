@@ -1,6 +1,10 @@
 package no.responseweb.kafka.utils;
 
 public class VersionUtil {
+    private VersionUtil() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static String getVersion() {
         try {
             return VersionUtil.class.getPackage().getImplementationVersion();
