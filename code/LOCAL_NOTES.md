@@ -228,6 +228,7 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
 - Connector Class
 - Writing a schema
 - Data Model for our Objects
+- Writing our GitHub API HTTP Client
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
