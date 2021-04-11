@@ -234,6 +234,7 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
   - Source Offsets allows Kafka Connect to track your progress in reading from the Source Partition
   - These are different from the partitions and offsets in Kafka Topic
   - Source Partition & Source Offsets are for Kafka Connect Source
+- Source Task
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
