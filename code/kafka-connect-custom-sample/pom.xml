@@ -11,6 +11,10 @@
     <name>kafka-connect-custom-sample</name>
     <description>A Kafka Connect Connector for kafka-connect-custom-sample</description>
 
+    <properties>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+    </properties>
+
     <parent>
         <groupId>com.github.jcustenborder.kafka.connect</groupId>
         <artifactId>kafka-connect-parent</artifactId>

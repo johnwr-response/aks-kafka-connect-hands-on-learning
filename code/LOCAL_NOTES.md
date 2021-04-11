@@ -235,6 +235,7 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
   - These are different from the partitions and offsets in Kafka Topic
   - Source Partition & Source Offsets are for Kafka Connect Source
 - Source Task
+- Building and running a Connector in Standalone Mode
 
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
