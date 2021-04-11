@@ -245,6 +245,16 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
 - More Resources for Developers
   - Added to section with links below
 
+### Section 9: Advanced Concepts
+- Setting up Kafka Connect in Production
+  - To set up Kafka in production:
+    1. Download the Kafka binaries
+    1. Set up the `connect-distributed.properties` file as needed
+    1. Add you jars where needed (`plugins.path` or `classpath`)
+    1. Launch Kafka Connect
+    1. (Optionally) set up the `Landoop Kafka Connect UI` (to interact with the REST API)
+      - See [Kafka Connect UI](https://github.com/lensesio/kafka-connect-ui)
+
 # Links
 - [Lenses IO Github](https://github.com/lensesio/fast-data-dev "Lenses IO Github")
 - [Confluent Hub](https://www.confluent.io/hub/ "Confluent Hub for Kafka® connectors and more")
@@ -252,6 +262,7 @@ docker run --rm -it -v ${PWD}:/tutorial --net=host landoop/fast-data-dev:latest 
 - [Confluent Connector Guidelines](https://www.confluent.io/wp-content/uploads/Partner-Dev-Guide-for-Kafka-Connect.pdf?x18424 "Partner Development Guide for Kafka Connect")
 - [Kafka Connect Developer Guide](https://docs.confluent.io/platform/current/connect/devguide.html "Connector Developer Guide")
 - [Guidelines for writing Connectors](https://gist.github.com/jcustenborder/b9b1518cc794e1c1895c3da7abbe9c08#schema-types "Gist from confluent employee")
+- [Kafka Connect UI](https://github.com/lensesio/kafka-connect-ui)
 
 # Github setup
 ```
